@@ -2,7 +2,8 @@ function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
-  this.marks = [];
+  let marks = [];
+  this.marks = marks
 }
 
 
@@ -11,22 +12,27 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-  this.marks.push(...marks)
-}
-Student.prototype.getAverage = function () {
-  if (Array.isArray(this.marks) ){
-    return 0
-  } else { 
-    for( let propery in this.marks){
-        let sum = 0;
-       return Math.round((sum += propery) / this.marks.length)
-    }
+  if(Student.hasOwnProperty(this.marks) ){
+      this.marks.push(...marks)  
+  } 
+  return 0
   }
-}
+  Student.prototype.getAverage = function () {
+    if(Array.isArray(this.marks) === true){
+    let result = this.marks.reduce((acc, item) =>{
+       acc + item
+       return result
+      }
+    ) 
+    }
+     
+    }
+
+
 
 Student.prototype.exclude = function (reason) {
-  delete Student.subject;
-  delete Student.marks
-  this.reason = reason
+  delete setSubject.subject;
+  delete Student.marks;
+  this.reason = exclude
 }
 
