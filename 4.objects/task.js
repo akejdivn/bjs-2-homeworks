@@ -1,4 +1,4 @@
-function Student(name, gender, age, marks) {
+function Student(name, gender, age) {
   this.name = name;
   this.gender = gender;
   this.age = age;
@@ -11,22 +11,26 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
- if(("this.marks") in Student === true)
+
+ if('marks' in this === true){
     this.marks.push(...marks)
+ 
+}
   
   } 
   Student.prototype.getAverage = function () {
-    if(Array.isArray(this.marks) === true){
-   for (let i = 0; i < this.marks.length; i++){
-     let sum = 0;
-     sum += this.marks[i];
-     let average = sum / this.marks.length;
-     return average;
-   } 
-      
-    }
-    return 0
+    if( !(Array.isArray(this.marks)) || this.marks.length === 0 ){
+     
+   return 0
   }
+   let sum = 0;
+   for (let i = 0; i < this.marks.length; i++){
+    sum += this.marks[i];
+    
+   }
+   return sum / this.marks.length;
+  }
+   
 
 
 
