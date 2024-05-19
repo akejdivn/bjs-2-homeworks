@@ -16,11 +16,11 @@ fix() {
   if (newState < 0) {
       this.state = 0;
   } else if (newState > 100) {
-    this.state = 100
-  } 
+    this.state = 100;
+  } else 
       this._state = newState;
   
-  }
+}
   get state() {
     return this._state;
   }
@@ -68,14 +68,14 @@ class Library {
     this.books = []
     }
     addBook(book){
-        if(this.state > 30){
+        if(book.state > 30){
             this.books.push(book)
         }
     }
     findBookBy(type, value){
       for(let i = 0; i < this.books.length; i++){
         if(this.books[i][type] === value){
-          return this.books[i].name
+          return this.books[i]
         }
       }
       return null
@@ -83,10 +83,15 @@ class Library {
     }
 
   giveBookByName(bookName){
-    if(this.books.includes(bookName)){
-      let deletBook = this.books.findIndex(bookName);
-      this.books.splice(deletBook, 1)
-    }
+    
+      for(let i = 0; i <this.books.length; i++){
+        if(this.books[i] === bookName ){
+
+          let deletBook = this.books.findIndex(bookName);
+          this.books.splice(deletBook, 1)
+        }
+      }
+    
     return null ;
   }
 }
