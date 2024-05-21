@@ -14,9 +14,9 @@ fix() {
   set state(newState) {
     
   if (newState < 0) {
-      this.state = 0;
+      this._state = 0;
   } else if (newState > 100) {
-    this.state = 100;
+    this._state = 100;
   } else 
       this._state = newState;
   
@@ -85,11 +85,12 @@ class Library {
   giveBookByName(bookName){
     
       for(let i = 0; i <this.books.length; i++){
-        if(this.books[i] === bookName ){
+        if(this.books[i].name === bookName ){
 
-          let deletBook = this.books.findIndex(bookName);
+          let deletBook = this.books[i];
           this.books.splice(deletBook, 1)
-        }
+          return deletBook
+        } 
       }
     
     return null ;
